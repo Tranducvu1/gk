@@ -71,7 +71,7 @@
                 <groupId>org.springframework.boot</groupId> 
                 <artifactId>spring-boot-maven-plugin</artifactId> 
             </plugin> 
-        </plugins>
-        <finalName>gk-springboot-new</finalName>
+        </plugins> 
+         <finalName>gk-springboot-new</finalName>
     </build> 
 </project>

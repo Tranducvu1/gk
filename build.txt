@@ -1,0 +1,37 @@
+[ec2-user@ip-172-31-90-213 ~]$ docker logs b9a9dce15c8a
+Error: Unable to access jarfile target/gk-springboot-new.jar
+[ec2-user@ip-172-31-90-213 ~]$ docker start b9a9dce15c8a
+b9a9dce15c8a
+[ec2-user@ip-172-31-90-213 ~]$ docker start b9a9dce15c8a
+b9a9dce15c8a
+[ec2-user@ip-172-31-90-213 ~]$ docker logs b9a9dce15c8a
+Error: Unable to access jarfile target/gk-springboot-new.jar
+Error: Unable to access jarfile target/gk-springboot-new.jar
+Error: Unable to access jarfile target/gk-springboot-new.jar
+[ec2-user@ip-172-31-90-213 ~]$ docker ps -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS                          PORTS     NAMES
+b9a9dce15c8a   f601287df745   "java -jar target/gk…"   4 minutes ago   Exited (1) About a minute ago             springboot-container
+[ec2-user@ip-172-31-90-213 ~]$ nano Dockerfile
+[ec2-user@ip-172-31-90-213 ~]$ docker rm springboot-container
+springboot-container
+[ec2-user@ip-172-31-90-213 ~]$ docker build -t gk-springboot-new .
+[+] Building 0.4s (8/8) FINISHED                                                                                                                                             docker:default
+ => [internal] load build definition from Dockerfile                                                                                                                                   0.0s
+ => => transferring dockerfile: 249B                                                                                                                                                   0.0s
+ => [internal] load metadata for docker.io/library/openjdk:17-jdk-slim                                                                                                                 0.3s
+ => [internal] load .dockerignore                                                                                                                                                      0.0s
+ => => transferring context: 2B                                                                                                                                                        0.0s
+ => [1/3] FROM docker.io/library/openjdk:17-jdk-slim@sha256:aaa3b3cb27e3e520b8f116863d0580c438ed55ecfa0bc126b41f68c3f62f9774                                                           0.0s
+ => [internal] load build context                                                                                                                                                      0.0s
+ => => transferring context: 104B                                                                                                                                                      0.0s
+ => CACHED [2/3] WORKDIR /app                                                                                                                                                          0.0s
+ => CACHED [3/3] COPY gk-springboot-new.jar /app/                                                                                                                                      0.0s
+ => exporting to image                                                                                                                                                                 0.0s
+ => => exporting layers                                                                                                                                                                0.0s
+ => => writing image sha256:66bd782f354f45d3dbc43ecc540c55bac85aba5853ae887dab7377ed902c6115                                                                                           0.0s
+ => => naming to docker.io/library/gk-springboot-new                                                                                                                                   0.0s
+[ec2-user@ip-172-31-90-213 ~]$ docker run -d -p 7272:7272 --name springboot-container gk-springboot-new
+5f2901a37c0edb0cda1d6a02555b3c3a946bc8d1964f9ed2aade1a0a34965f7e
+[ec2-user@ip-172-31-90-213 ~]$ docker logs springboot-container^C
+[ec2-user@ip-172-31-90-213 ~]$
+[ec2-user@ip-172-31-90-213 ~]$ docker logs springboot-container
